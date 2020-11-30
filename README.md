@@ -75,6 +75,7 @@ In the cell  Step 4 the method fit_polynomial()  uses initial histogram and a sl
 There is also draw_lanes() mehtod and the get_curvature() methods defined there.
 The draw_lanes() just fills a nice shape between the two lines fit by find_lane_pixels()
 
+![alt text](./output_images/foundlines.jpg "Found lines")
 
 ## Defining full pipeline
 
@@ -91,9 +92,8 @@ Also some  sanity check is performed to see if lines in the next image are reaso
 
 ## Pipeline (video)
 
-The final output from the transformation applied to the vidio project_video.mp4 is here:
+The final output from the transformation applied to the vidio project_video.mp4 is in file output_images/project_video_output.mp4
 
-![alt text](./output_images/project_video.mp4 "Video")
 
 ---
 
