@@ -2,7 +2,7 @@
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 ![Lanes Image](./examples/example_output.jpg)
 
-###The goal for this project was to create a pipeline of image processing procedures that would identify and mark the car lanes on the images of the road. This pipeline then should be applicable as a processing tool that can be applied to a sequence of frames from a given video.
+### The goal for this project was to create a pipeline of image processing procedures that would identify and mark the car lanes on the images of the road. This pipeline then should be applicable as a processing tool that can be applied to a sequence of frames from a given video.
 ---
 
 The steps of this project are the following:
@@ -17,7 +17,7 @@ The steps of this project are the following:
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
 
-### Camera Calibration
+## Camera Calibration
 
 The code for this step is contained in the cell marked as Step 1.
 The same code was used that was used in the Lesson's quiz.
@@ -32,13 +32,13 @@ Here are some examples:
 ![alt text](./camera_cal/calibration9.jpg "Original")
 ![alt text](./output_images/undisorted_checkerboard.jpg "Undistorted")
 
-### Pipeline (single images)
+## Pipeline (single images)
 
 The Step 2 cell of my notebook contains filtering methods that were combined together in the method
 
 color_gradient_combined()
 
-From the Lessons and the quizes it was clear tht on the given test images the combination of the S channel color filtering and Sobel gradient transform in the 'x' direction gives a very good result where the lines ae clearly emphasized.
+From the Lessons and the quizes it was clear that on the given test images the combination of the S channel color filtering and Sobel gradient transform in the 'x' direction gives a very good result where the lines ae clearly emphasized.
 
 The Step 3 cell of my notebook goes through each of the test images and applies 
 
@@ -65,38 +65,39 @@ I used these matrices that gave  good result. On all output images the lines loo
  
 ![alt text](./test_images/test6.jpg "Original")
 ![alt text](./output_images/undistorted7.jpg "Undistorted")
-![alt text](./output_images/filtered7.jpg "Undistorted")
-![alt text](./output_images/warped.jpg "Undistorted")
+![alt text](./output_images/filtered7.jpg "Filtered")
+![alt text](./output_images/warped7.jpg "Warped")
 
  
-#### Fitting the lines
+## Fitting the lines
 
 In the cell  Step 4 the method fit_polynomial()  uses initial histogram and a sliding window technique to identify the line pixels and then fits  a second  degree polynomial for both the left and the right lines.
 There is also draw_lanes() mehtod and the get_curvature() methods defined there.
 The draw_lanes() just fills a nice shape between the two lines fit by find_lane_pixels()
 
 
-#### Defineing a pipeline
+## Defining full pipeline
 
 Step 5 was to define  a method process_image() that combines all the previous transformations to produce  an original image overlayed with a  nicely defined area between the dscoverd lane lines.
 
 ![alt text](./output_images/overlay.jpg "Overlay")
 
-#### Defie a an efficient pipepline
+##  Define an efficient pipepline
 
 In Step 6  I defined a Pipeline class  to save polynomial coefficients to be used a starting points  for each new frame image.
 Also some  sanity check is performed to see if lines in the next image are reasonable and if not to fall back on the lines from the previous frame image
 
+![alt text](./output_images/overlay2.jpg "Overlay")
 
-### Pipeline (video)
+## Pipeline (video)
 
 The final output from the transformation applied to the vidio project_video.mp4 is here:
 
-![alt text](./project_video.mp4)
+![alt text](./output_images/project_video.mp4 "Video")
 
 ---
 
-### Discussion
+## Discussion
 
 The Pipeline's process_image() works really well on the `project_video.mp4`.
 It does not work well on the `challenge_video.mp4` and I did spend some time analyzing the root cause.
