@@ -99,10 +99,13 @@ The final output from the transformation applied to the vidio project_video.mp4 
 
 ## Discussion
 
-The Pipeline's process_image() works really well on the `project_video.mp4`.
-It does not work well on the `challenge_video.mp4` and I did spend some time analyzing the root cause.
+The Pipeline's process_image() works really well on the `project_video.mp4`. I do see a problem around second 23. The problem here is the same as with the `challenge_video.mp4` - we treat a shadow from the road seprator and pavement gap as lines. I played with my combined fidler method and threshold extensively and could not get rid of the probem. Unfortnately.
+
+It does not work well at all on the `challenge_video.mp4` and I did spend some time analyzing the root cause.
 It is clear that the lane detection procedure gets confused by the lines created by the shadow from the road separator and from uneven pavement in the middle of the car lane. 
 I saved few frames from the clip and applied the same filters used on the test_images and the results were clearly pointing to a problem. There were usually more than 2 lines.  
 I could not figure out the filtering technique that would help. Would be curious to know how this is avoided in real applications.
+
+I did play with restricing the window slicing and polynomial fitting only to the "regions of intereset" trying to minimize effect of the 'impostor' lines. It would help with some frames but would ruin the others. So I am indeed convinced that the filtering technique here is the most important factor.
 
 
